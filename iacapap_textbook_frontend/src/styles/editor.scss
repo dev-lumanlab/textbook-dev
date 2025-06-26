@@ -1,0 +1,284 @@
+#editor,
+.ck.ck-content.ck-editor__editable {
+	min-height: 400px;
+
+	h1,
+	h2,
+	h3,
+	h4 {
+		font-weight: 700;
+		color: var(--blue-color);
+	}
+
+	h1 {
+		font-size: 56px;
+		line-height: 70px;
+		margin-top: 40px;
+	}
+
+	h2 {
+		font-size: 40px;
+		line-height: 50px;
+		margin-top: 40px;
+	}
+
+	h3 {
+		font-size: 32px;
+		line-height: 40px;
+		margin-top: 24px;
+		color: var(--text-color);
+	}
+
+	h4 {
+		font-size: 26px;
+		line-height: 36px;
+		margin-top: 24px;
+		color: var(--text-color);
+	}
+
+	p {
+		font-size: 24px;
+		line-height: 42px;
+		margin-bottom: 0;
+		margin-top: 24px;
+
+		& + p {
+			margin-top: 0;
+		}
+
+		strong {
+			font-weight: 600;
+		}
+	}
+
+	ol {
+		padding-left: 32px;
+		list-style-type: decimal;
+
+		li {
+			font-size: 24px;
+			font-weight: 400;
+			line-height: 42px;
+		}
+	}
+
+	ul {
+		padding-left: 34px;
+		margin-top: 24px;
+		margin-bottom: 24px;
+		list-style-type: disc;
+
+		li {
+			font-size: 24px;
+			font-weight: 400;
+			line-height: 42px;
+
+			&::marker {
+				font-size: 16px;
+			}
+		}
+	}
+
+	hr {
+		background: #f65555;
+		height: 12px;
+	}
+
+	.ck-horizontal-line.ck-widget {
+		hr {
+			background: #f65555;
+			height: 12px;
+		}
+	}
+}
+
+#editor {
+	img {
+		height: auto;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		scroll-margin-top: 105px;
+	}
+	figure {
+		&.image {
+			margin: 0.9em auto;
+			min-width: 50px;
+			text-align: center;
+
+			clear: both;
+			display: table;
+		}
+
+		&.table {
+			display: table;
+			margin: 0.9em auto;
+		}
+
+		&.image-style-side {
+			float: right;
+		}
+
+		table {
+			overflow: hidden;
+			border: 1px double #b3b3b3;
+			border-collapse: collapse;
+			border-spacing: 0;
+			height: 100%;
+			width: 100%;
+
+			th,
+			td {
+				min-width: 2em;
+				padding: 0.4em;
+			}
+		}
+
+		img {
+			display: block;
+			height: auto;
+			margin: 0 auto;
+			max-width: 100%;
+			min-width: 100%;
+		}
+	}
+}
+
+// custom ckeditor toolbar style
+.ck .btn-wrap {
+	position: absolute;
+	top: 34px;
+	right: 24px;
+	display: flex;
+	gap: 8px;
+
+	& button {
+		border-radius: 99px;
+		border: 1px solid #d7dbdf;
+		color: var(--slate-color);
+		font-size: 16px;
+		line-height: 24px;
+		padding: 11px 19px;
+		cursor: pointer;
+
+		& * {
+			cursor: pointer;
+		}
+	}
+	.trash {
+		width: 48px;
+		height: 48px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.publishing {
+		background: var(--blue-color);
+		color: #fff;
+		border-color: var(--blue-color);
+	}
+}
+
+.ck.ck-editor__top .ck-sticky-panel .ck-sticky-panel__content {
+	border: none !important;
+	border-bottom: 1px solid #dfe3e6 !important;
+}
+
+.ck.ck-editor__main {
+	background: #fff;
+
+	.ck.ck-editor__editable_inline {
+		padding: 0 72px 24px;
+	}
+	// ckeditor focus 시 border 제거
+	.ck-content {
+		border: none;
+		box-shadow: none;
+
+		&.ck-focused {
+			border: none !important;
+			box-shadow: none !important;
+		}
+	}
+}
+
+// .ck-body-wrapper {
+// 	display: none !important;
+// }
+
+.ck.ck-editor__top .ck-sticky-panel .ck-sticky-panel__content .ck-menu-bar,
+.ck.ck-editor__top .ck-sticky-panel .ck-sticky-panel__content .ck-toolbar {
+	padding: 24px;
+}
+
+.ck .ck.ck-toolbar .ck.ck-toolbar__separator {
+	background: #e6e8eb !important;
+	height: 24px !important;
+	margin-top: auto !important;
+	margin-bottom: auto !important;
+}
+
+.ck.ck-dropdown.ck-heading-dropdown + span {
+	display: none !important;
+}
+
+.ck.ck-toolbar > .ck-toolbar__items > :not(.ck-toolbar__line-break),
+.ck.ck-toolbar > .ck.ck-toolbar__grouped-dropdown {
+	margin-bottom: 2px !important;
+	margin-top: 2px !important;
+}
+
+/** chapter 입력란 */
+
+// .editor-chapter {
+// 	position: absolute;
+// 	width: 100%;
+// 	padding: 24px;
+// 	z-index: 10;
+// 	background-color: #fff;
+
+// 	.chapter-wrap {
+// 		padding: 24px;
+// 		background: #308fff;
+// 		border-radius: 16px;
+// 		display: flex;
+// 		justify-content: space-between;
+// 		align-items: center;
+
+// 		.chapter-title {
+// 			background: transparent;
+// 			border: none;
+// 			font-size: 48px;
+// 			color: white;
+// 			line-height: 60px;
+// 			width: 800px;
+// 		}
+
+// 		.chapter-version-wrap {
+// 			padding: 23px 47px;
+// 			border-radius: 99px;
+// 			border: 2px solid #fff;
+// 			color: #fff;
+// 			font-size: 32px;
+// 			line-height: 40px;
+// 			display: flex;
+// 			align-items: center;
+// 			gap: 10px;
+
+// 			input {
+// 				background: transparent;
+// 				border: none;
+// 				font-size: 32px;
+// 				line-height: 40px;
+// 				color: #fff;
+// 				width: 60px;
+// 			}
+// 		}
+// 	}
+// }

@@ -1,0 +1,7 @@
+.env
+.venv/
+migrations/
+alembic.ini
+__pycache__/
+*.pyc
+storage/

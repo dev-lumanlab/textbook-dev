@@ -1,0 +1,58 @@
+<script>
+	import Modal from './Modal.svelte';
+
+	export let isModalOpen = false;
+	export let closeModal;
+	export let onDeleteDone;
+</script>
+
+<Modal isOpen={isModalOpen}>
+	<div class="modal-wrap">
+		<h2 class="modal-title">DELETE</h2>
+		<p>Deleted user's information is hard to recover.<br />Would you still like to delete it?</p>
+		<div class="btn-wrap">
+			<button class="btn type2" on:click={closeModal}>Cancel</button>
+			<button class="btn type1" on:click={onDeleteDone}>Delete</button>
+		</div>
+	</div>
+</Modal>
+
+<style lang="scss">
+	.modal-wrap {
+		width: 336px;
+
+		h2 {
+			font-size: 20px;
+			line-height: 30px;
+			font-weight: 600;
+			margin-bottom: 12px;
+			padding: 3px 0;
+		}
+		p {
+			font-size: 16px;
+			line-height: 26px;
+			margin-bottom: 22px;
+		}
+		.btn-wrap {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			width: 100%;
+			gap: 8px;
+
+			.btn {
+				width: auto;
+			}
+
+			button {
+				flex: 1;
+			}
+		}
+
+		.btn.type1 {
+			font-size: 14px;
+			line-height: 20px;
+			padding: 10px;
+		}
+	}
+</style>
