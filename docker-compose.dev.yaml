@@ -25,7 +25,7 @@ services:
       context: ./nginx
       dockerfile: dev.Dockerfile
     ports:
-      - '80:80'
+      - '20086:80'
     restart: always
     <<: *defaults
 
@@ -33,7 +33,7 @@ services:
     container_name: textbook-dev-postgresql
     image: postgres:17.4-alpine
     ports:
-      - '5432:5432'
+      - '45432:5432'
     volumes:
       - ./persist-data/db-data/mount:/var/lib/postgresql/data
     restart: unless-stopped
@@ -47,8 +47,6 @@ services:
       dockerfile: backend.Dockerfile
     depends_on:
       - postgresql
-    ports:
-      - '8080:80'
     restart: always
     volumes:
       - ./iacapap_textbook_backend:/app
@@ -62,8 +60,6 @@ services:
       dockerfile: frontend.Dockerfile
     depends_on:
       - backend
-    ports:
-      - '3000:3000'
     restart: always
 #    volumes:
 #      - ./iacapap_textbook_frontend:/app
