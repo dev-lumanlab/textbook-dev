@@ -1,0 +1,6 @@
+[submodule "iacapap_textbook_frontend"]
+	path = iacapap_textbook_frontend
+	url = git@github.com:dev-lumanlab/iacapap_textbook_frontend.git
+[submodule "iacapap_textbook_backend"]
+	path = iacapap_textbook_backend
+	url = git@github.com:dev-lumanlab/iacapap_textbook_backend.git
