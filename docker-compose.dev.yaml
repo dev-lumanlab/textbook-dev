@@ -1,0 +1,70 @@
+x-defaults: &defaults
+  env_file:
+    - "envs/.env.dev"
+  extra_hosts:
+    - "host.docker.internal:host-gateway"
+  logging:
+    driver: "json-file"
+    options:
+      max-size: "10m"
+      max-file: "10"
+  networks:
+    - textbook-dev-internal
+
+networks:
+  textbook-dev-internal:
+    driver: bridge
+    internal: false
+
+services:
+
+  nginx:
+    container_name: textbook-dev-nginx
+    image: textbook-dev-nginx:latest
+    build:
+      context: ./nginx
+      dockerfile: dev.Dockerfile
+    ports:
+      - '80:80'
+    restart: always
+    <<: *defaults
+
+  postgresql:
+    container_name: textbook-dev-postgresql
+    image: postgres:17.4-alpine
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./persist-data/db-data/mount:/var/lib/postgresql/data
+    restart: unless-stopped
+    <<: *defaults
+
+  backend:
+    container_name: textbook-dev-backend
+    image: textbook-dev-backend:latest
+    build:
+      context: .
+      dockerfile: backend.Dockerfile
+    depends_on:
+      - postgresql
+    ports:
+      - '8080:80'
+    restart: always
+    volumes:
+      - ./iacapap_textbook_backend:/app
+    <<: *defaults
+
+  frontend:
+    container_name: textbook-dev-frontend
+    image: textbook-dev-frontend:latest
+    build:
+      context: .
+      dockerfile: frontend.Dockerfile
+    depends_on:
+      - backend
+    ports:
+      - '3000:3000'
+    restart: always
+#    volumes:
+#      - ./iacapap_textbook_frontend:/app
+    <<: *defaults
